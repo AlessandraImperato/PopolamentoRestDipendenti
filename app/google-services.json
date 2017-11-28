@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "1022848340148",
+    "firebase_url": "https://provadb-919bd.firebaseio.com",
+    "project_id": "provadb-919bd",
+    "storage_bucket": "provadb-919bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022848340148:android:d9a18e9259d1df65",
+        "android_client_info": {
+          "package_name": "com.example.user.provafirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022848340148-lik1g9hu206f46qql0m70po196j4sglh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user.provafirebase",
+            "certificate_hash": "2d6a9eb099bf806844af892d6967a37eb88ee71f"
+          }
+        },
+        {
+          "client_id": "1022848340148-gj9d353qs2151so1nhfmfpop1ncrd23h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc-6_p20nBQZouTE5VeiYMQeDbTREiyF0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022848340148-gj9d353qs2151so1nhfmfpop1ncrd23h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022848340148:android:36f73524753a9ebb",
+        "android_client_info": {
+          "package_name": "it.alessandra.popolamentorestdipendenti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022848340148-ajkp6f38ncmetss339b9l3f7vltarvvg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "it.alessandra.popolamentorestdipendenti",
+            "certificate_hash": "1605a4b549d411246b1c44590043f8c02bc3fdbd"
+          }
+        },
+        {
+          "client_id": "1022848340148-gj9d353qs2151so1nhfmfpop1ncrd23h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc-6_p20nBQZouTE5VeiYMQeDbTREiyF0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022848340148-gj9d353qs2151so1nhfmfpop1ncrd23h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
