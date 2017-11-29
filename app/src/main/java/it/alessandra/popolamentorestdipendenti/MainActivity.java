@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity implements TaskDelegate{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       //* TaskDelegate delegate = this; //associo il contesto attuale all'oggetto interfaccia
-
 
         listView = findViewById(R.id.listview);
         item = findViewById(R.id.item);
@@ -42,36 +40,35 @@ public class MainActivity extends AppCompatActivity implements TaskDelegate{
         dipendenti = new ArrayList<>();
         arrayMatr = azienda.listaMatricole();
 
-        //* activeRestCAll(delegate);
-        callRest("Dipendenti.json");
-        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayMatr);
-        listView.setAdapter(arrayAdapter);
+        TaskDelegate delegate = this; //associo il contesto attuale all'oggetto interfaccia
+        callRest(delegate);
+        //callRest("Dipendenti.json");
+/*      arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayMatr);
+        listView.setAdapter(arrayAdapter);*/
     }
 
-    public void callRest(String url) {
-       // dialog = new ProgressDialog(MainActivity.this);
-       // dialog.setMessage("Loading");
-       // dialog.show();
-        FirebaseRestClient.get(url, null, new AsyncHttpResponseHandler() {
+    public void callRest(/*String url*/ final TaskDelegate delegate) {
+        dialog = new ProgressDialog(MainActivity.this);
+        dialog.setMessage("Loading");
+        dialog.show();
+        FirebaseRestClient.get("Dipendenti.json", null, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 if (statusCode == 200) {
                     String text = new String(responseBody);
                     try {
-                        dipendenti = JsonParse.getList(text);
-                        arrayMatr = azienda.listaMatricole();
-                        //*delegate.TaskCompletionResult("Caricamento completato");
-                        //ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.itemlist,R.id.item,arrayMatr);
-                        //listView.setAdapter(arrayAdapter);
+                         dipendenti = JsonParse.getList(text);
+                         //azienda.setDipendenti(dipendenti);
+                        delegate.TaskCompletionResult("Caricamento completato");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    //Log.i("MAIN_ACTIVITY", text);
+                    Log.i("MAIN_ACTIVITY", text);
                 }
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                //*delegate.TaskCompletionResult("Caricamento fallito");
+                delegate.TaskCompletionResult("Caricamento fallito");
             }
         });
     }
@@ -80,7 +77,13 @@ public class MainActivity extends AppCompatActivity implements TaskDelegate{
     public void TaskCompletionResult(String result){
         dialog.dismiss();
         dialog.cancel();
-        Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG);
+        Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
+        azienda.setDipendenti(dipendenti);
+        arrayMatr = azienda.listaMatricole();
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrayMatr);
+        listView.setAdapter(arrayAdapter);
+
+
     }
 
 }
