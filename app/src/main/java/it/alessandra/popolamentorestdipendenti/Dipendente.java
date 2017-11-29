@@ -1,10 +1,12 @@
 package it.alessandra.popolamentorestdipendenti;
 
+import java.io.Serializable;
+
 /**
  * Created by utente7.academy on 28/11/2017.
  */
 
-public class Dipendente {
+public class Dipendente implements Serializable {
     public String nome;
     public String cognome;
     public String matricola;

@@ -1,9 +1,12 @@
 package it.alessandra.popolamentorestdipendenti;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -13,6 +16,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.json.JSONException;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements TaskDelegate{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+       /* String nomeFile = "File Azienda";
+        InternalStorage.writeObject(this,nomeFile,azienda);*/
+
+
         listView = findViewById(R.id.listview);
         item = findViewById(R.id.item);
 
@@ -45,6 +53,19 @@ public class MainActivity extends AppCompatActivity implements TaskDelegate{
         //callRest("Dipendenti.json");
 /*      arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arrayMatr);
         listView.setAdapter(arrayAdapter);*/
+
+        /*String nomeFile = "File Azienda";
+         InternalStorage.writeObject(this,nomeFile,azienda);*/
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String matricola = listView.getItemAtPosition(position).toString();
+                Intent i = new Intent(getApplicationContext(),DipendenteActivity.class);
+                i.putExtra("MATRICOLA",matricola);
+                startActivity(i);
+            }
+        });
     }
 
     public void callRest(/*String url*/ final TaskDelegate delegate) {
@@ -83,8 +104,8 @@ public class MainActivity extends AppCompatActivity implements TaskDelegate{
         //arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrayMatr);
         arrayAdapter = new ArrayAdapter<>(this, R.layout.itemlist,R.id.item,arrayMatr);
         listView.setAdapter(arrayAdapter);
-
-
+        String nomeFile = "FileAzienda";
+        InternalStorage.writeObject(this,nomeFile,azienda);
     }
 
 }

@@ -1,5 +1,6 @@
 package it.alessandra.popolamentorestdipendenti;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ import java.util.List;
  * Created by utente7.academy on 28/11/2017.
  */
 
-public class Azienda {
+public class Azienda implements Serializable {
 
     public List<Dipendente> dipendenti;
 
@@ -31,7 +32,7 @@ public class Azienda {
     public List<String> listaMatricole(){
         List<String> matricole = new ArrayList<>();
         String s = "";
-        String arrayMatricole [] = new String[dipendenti.size()];
+       // String arrayMatricole [] = new String[dipendenti.size()];
         for(Dipendente dipendente : dipendenti){
             s = dipendente.getMatricola();
             matricole.add(s);
@@ -40,5 +41,13 @@ public class Azienda {
         return matricole;
     }
 
-    //public Dipendente getDipendenteFromMatricola(String matricola){}
+    public Dipendente getDipendenteFromMatricola(String matricola){
+        Dipendente dip = new Dipendente();
+        for (Dipendente tmp : dipendenti){
+            if(matricola.equals(tmp.getMatricola())){
+                dip = tmp;
+            }
+        }
+        return dip;
+    }
 }
