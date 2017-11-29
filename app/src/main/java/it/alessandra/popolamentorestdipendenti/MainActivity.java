@@ -80,7 +80,8 @@ public class MainActivity extends AppCompatActivity implements TaskDelegate{
         Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
         azienda.setDipendenti(dipendenti);
         arrayMatr = azienda.listaMatricole();
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrayMatr);
+        //arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrayMatr);
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.itemlist,R.id.item,arrayMatr);
         listView.setAdapter(arrayAdapter);
 
 
