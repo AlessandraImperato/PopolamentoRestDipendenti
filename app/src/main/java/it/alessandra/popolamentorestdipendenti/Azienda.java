@@ -28,7 +28,7 @@ public class Azienda {
     }
 
     // metodo che ritrona un array di stringe contenente le matricole dei dipendenti
-    public String [] listaMatricole(List<Dipendente> dipendenti){
+    public List<String> listaMatricole(){
         List<String> matricole = new ArrayList<>();
         String s = "";
         String arrayMatricole [] = new String[dipendenti.size()];
@@ -36,7 +36,9 @@ public class Azienda {
             s = dipendente.getMatricola();
             matricole.add(s);
         }
-        arrayMatricole = matricole.toArray(arrayMatricole);
-        return arrayMatricole;
+        //arrayMatricole = matricole.toArray(arrayMatricole);
+        return matricole;
     }
+
+    //public Dipendente getDipendenteFromMatricola(String matricola){}
 }
